@@ -1,6 +1,11 @@
 #!perl -T
 
-use Test::More tests => 273;
+use Test::More tests => 269;
+use Carp();
+
+our $w = '';
+no warnings 'redefine';
+local *Carp::carp = sub { $main::w .= @_ };
 
 BEGIN {
 	use_ok( 'Cache::Benchmark' );
@@ -42,16 +47,17 @@ is($cache->purge(), 1, 'purge');
 my $new_cache = new Fukurama::Testcache();
 my $test = new Cache::Benchmark();
 
-my $w = '';
-is(close(STDERR), 1, 'close STDERR');
-is(open(STDERR, ">", \$w), 1, 'reopen STDERR');
+$w = '';
+#my $w = '';
+#is(close(STDERR), 1, 'close STDERR');
+#is(open(STDERR, ">", \$w), 1, 'reopen STDERR');
 
 is($test->init( abc => 1), 0, 'init with unknown parameters');
 is(length($w) > 0, 1, 'warnings after failed init');
 
 $w = '';
-is(close(STDERR), 1, 'close STDERR');
-is(open(STDERR, ">", \$w), 1, 'reopen STDERR');
+#is(close(STDERR), 1, 'close STDERR');
+#is(open(STDERR, ">", \$w), 1, 'reopen STDERR');
 
 is($test->init( keys => 100, access_counter => 1000, test_type => 'plain', min_key_length => 5 ), 1, 'init cache');
 is($test->run($new_cache, 1), 1, 'run test');

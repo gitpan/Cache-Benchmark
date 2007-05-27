@@ -32,11 +32,11 @@ Cache::Benchmark - Tests the quality and speed of a cache module to compare cach
 
 =head1 VERSION
 
-Version 0.01
+Version 0.011
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.011';
 
 
 =head1 SYNOPSIS
@@ -103,8 +103,7 @@ sub new {
 
 =head1 METHODS
 
-=head2 init( [ L</keys> => INT, L</min_key_length> => INT, L</access_counter> => INT, L</value> => SCALAR,
-L</test_type> => ENUM, L</weighted_key_config> => HASHREF, L</sleep_time> => FLOAT, L</access_list> => ARRAYREF ] )
+=head2 init( [ L</keys> => INT, L</min_key_length> => INT, L</access_counter> => INT, L</value> => SCALAR, L</test_type> => ENUM, L</weighted_key_config> => HASHREF, L</sleep_time> => FLOAT, L</access_list> => ARRAYREF ] )
 
 =over 4
 

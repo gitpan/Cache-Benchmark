@@ -1,3 +1,4 @@
+use 5.000;
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
